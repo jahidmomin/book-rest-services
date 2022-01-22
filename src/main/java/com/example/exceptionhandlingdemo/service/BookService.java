@@ -7,4 +7,6 @@ public interface BookService {
     List<Book> getAllBooks();
 
     boolean save(Book book);
+
+    Book getBookBybookId(long bookId);
 }

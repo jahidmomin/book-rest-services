@@ -5,7 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Entity(name = "book_db")
+@Entity(name = "book")
+@Table
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

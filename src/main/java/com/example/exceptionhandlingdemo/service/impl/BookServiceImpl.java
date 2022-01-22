@@ -1,5 +1,6 @@
 package com.example.exceptionhandlingdemo.service.impl;
 
+import com.example.exceptionhandlingdemo.exceptions.BookNotFoundException;
 import com.example.exceptionhandlingdemo.model.Book;
 import com.example.exceptionhandlingdemo.repo.BookRepo;
 import com.example.exceptionhandlingdemo.service.BookService;
@@ -26,5 +27,10 @@ public class BookServiceImpl implements BookService {
     public boolean save(Book book) {
         this.bookRepo.save(book);
         return true;
+    }
+
+    @Override
+    public Book getBookBybookId(long bookId) {
+        return this.bookRepo.findById(bookId).orElseThrow(()->{throw new BookNotFoundException("Book Not Exist");});
     }
 }

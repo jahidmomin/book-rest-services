@@ -2,10 +2,8 @@ package com.example.exceptionhandlingdemo.controller;
 
 import com.example.exceptionhandlingdemo.model.Book;
 import com.example.exceptionhandlingdemo.service.BookService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,11 @@ public class BookController {
     @GetMapping("/")
     public List<Book> getAllBooks() {
         return this.bookService.getAllBooks();
+    }
+
+    @GetMapping("/{bookId}")
+    public Book getBookById(@PathVariable long bookId) {
+        return this.bookService.getBookBybookId(bookId);
     }
 
     @PostMapping("/")
